@@ -17,5 +17,9 @@ public class SearchUseCase {
         return searchable.searchByQuery(query);
     }
 
+    public List<?> findByQuery(String query){
+        return searchable.findByQuery(query);
+    }
+
 
 }

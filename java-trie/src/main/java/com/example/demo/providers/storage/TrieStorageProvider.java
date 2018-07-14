@@ -23,12 +23,24 @@ public class TrieStorageProvider implements Searchable, Trieable {
     }
 
     @Override
+    public List<?> findByQuery(String query) {
+        System.out.println(trie.containsNode(query));
+        return null;
+    }
+
+    @Override
     public void syncByQuery(Object object) {
 
     }
 
     @Override
-    public void insertTrieNode(String n) {
-        trie.insert(n);
+    public void insertTrieNode(String keyword, Integer cid) {
+        trie.insert(keyword, cid);
     }
+
+    @Override
+    public void deleteTrieNode(String keyword) {
+        trie.delete(keyword);
+    }
+
 }

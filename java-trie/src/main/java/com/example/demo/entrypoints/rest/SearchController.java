@@ -19,8 +19,14 @@ public class SearchController {
     }
 
     @GetMapping
-    public List<?> searchByQuery(@RequestParam(name="query") String query){
-        return searchUseCase.searchByQuery(query);
+    public List<?> searchByQuery(@RequestParam(name="query") String query, @RequestParam(name="type", defaultValue="exact") String type){
+
+        if("exact".equals(type)){
+            return searchUseCase.findByQuery(query);
+        }
+        else{
+            return searchUseCase.searchByQuery(query);
+        }
     }
 
 }

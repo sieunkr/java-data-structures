@@ -11,7 +11,14 @@ public class TrieUseCase {
         this.trieable = trieable;
     }
 
-    public void insertTrieNode(String node){
-        trieable.insertTrieNode(node);
+    public void insertTrieNode(String keyword, Integer cid){
+        trieable.insertTrieNode(keyword, cid);
     }
+
+    public void deleteTrieNode(String keyword){
+        trieable.deleteTrieNode(keyword);
+    }
+
+
+
 }
