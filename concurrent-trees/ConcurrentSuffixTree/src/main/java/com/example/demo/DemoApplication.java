@@ -2,7 +2,9 @@ package com.example.demo;
 
 import com.googlecode.concurrenttrees.common.CharSequences;
 import com.googlecode.concurrenttrees.common.Iterables;
+import com.googlecode.concurrenttrees.common.PrettyPrinter;
 import com.googlecode.concurrenttrees.radix.node.concrete.DefaultCharArrayNodeFactory;
+import com.googlecode.concurrenttrees.radix.node.util.PrettyPrintable;
 import com.googlecode.concurrenttrees.suffix.ConcurrentSuffixTree;
 import com.googlecode.concurrenttrees.suffix.SuffixTree;
 import org.springframework.boot.CommandLineRunner;
@@ -20,9 +22,6 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Suffixes for 'TEST': " + Iterables.toString(CharSequences.generateSuffixes("TEST")));
-		System.out.println("Suffixes for 'TOAST': " + Iterables.toString(CharSequences.generateSuffixes("TOAST")));
-		System.out.println("Suffixes for 'TEAM': " + Iterables.toString(CharSequences.generateSuffixes("TEAM")));
 
 		SuffixTree<Integer> tree = new ConcurrentSuffixTree<Integer>(new DefaultCharArrayNodeFactory());
 
@@ -30,6 +29,8 @@ public class DemoApplication implements CommandLineRunner {
 		tree.put("springcloud", 2);
 		tree.put("springmvc", 3);
 		tree.put("sports", 77);
+
+		PrettyPrinter.prettyPrint((PrettyPrintable) tree, System.out);
 
 		//Exact 매칭
 		System.out.println("#1. Exact 매칭 테스트");

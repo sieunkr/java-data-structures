@@ -1,7 +1,9 @@
 package com.example.demo;
 
 import com.googlecode.concurrenttrees.common.Iterables;
+import com.googlecode.concurrenttrees.common.PrettyPrinter;
 import com.googlecode.concurrenttrees.radix.node.concrete.DefaultCharArrayNodeFactory;
+import com.googlecode.concurrenttrees.radix.node.util.PrettyPrintable;
 import com.googlecode.concurrenttrees.radixinverted.ConcurrentInvertedRadixTree;
 import com.googlecode.concurrenttrees.radixinverted.InvertedRadixTree;
 import org.springframework.boot.CommandLineRunner;
@@ -19,13 +21,15 @@ public class DemoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-        
+
         InvertedRadixTree<Integer> tree = new ConcurrentInvertedRadixTree<Integer>(new DefaultCharArrayNodeFactory());
 
         tree.put("springboot", 1);
         tree.put("springcloud", 2);
         tree.put("springmvc", 3);
         tree.put("sports", 77);
+
+        PrettyPrinter.prettyPrint((PrettyPrintable) tree, System.out);
 
         //Exact 매칭
         System.out.println("#1. Exact 매칭 테스트");

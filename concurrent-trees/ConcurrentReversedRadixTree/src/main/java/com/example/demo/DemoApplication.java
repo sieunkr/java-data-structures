@@ -1,6 +1,8 @@
 package com.example.demo;
 
+import com.googlecode.concurrenttrees.common.PrettyPrinter;
 import com.googlecode.concurrenttrees.radix.node.concrete.DefaultCharArrayNodeFactory;
+import com.googlecode.concurrenttrees.radix.node.util.PrettyPrintable;
 import com.googlecode.concurrenttrees.radixreversed.ConcurrentReversedRadixTree;
 import com.googlecode.concurrenttrees.radixreversed.ReversedRadixTree;
 import org.springframework.boot.CommandLineRunner;
@@ -25,6 +27,8 @@ public class DemoApplication implements CommandLineRunner {
 		tree.put("springcloud", 2);
 		tree.put("springmvc", 3);
 		tree.put("sports", 77);
+
+		PrettyPrinter.prettyPrint((PrettyPrintable) tree, System.out);
 
 		//Exact 매칭
 		System.out.println("#1. Exact 매칭 테스트");
